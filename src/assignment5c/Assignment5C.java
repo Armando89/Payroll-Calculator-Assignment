@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Armando Galan-Cedeño  Assignment5C
+//CS121 Spring 2020
+//April 2, 2020
+//Purpose: Payroll Calculator - Modify 4B - add methods and a frequency counter
+
 package assignment5c;
 
-/**
- *
- * @author Armando
- */
-public class Assignment5C {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+public class Assignment5C 
+{
+    public static void main(String[] args) 
+    {
+        
+    }   
 }
