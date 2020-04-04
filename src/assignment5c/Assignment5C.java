@@ -10,8 +10,13 @@ public class Assignment5C
 {
     public static void main(String[] args) 
     {
+        //final double BASE_PAY = 200;
+        //final double COMMISSION = .10;
+        //double wPaycheck, hrRate, otPay, regularPay, priceItems,
+        //        totalAmount, totalComm;
+        //int hrs, otHours, soldItems;
         int answer;
-        String fName, lName, fullName, message;
+        String fName, lName, fullName, salEmployee, hrEmployee, commEmployee;
         
         JOptionPane.showMessageDialog(null, "Welcome to the HR Payroll Program.");
         answer = Integer.parseInt(JOptionPane.showInputDialog("Please provide "
@@ -27,36 +32,56 @@ public class Assignment5C
         
         fName = JOptionPane.showInputDialog("Please enter your first name:");
         lName = JOptionPane.showInputDialog("Please enter your last name:");
-        
-        fullName = Name(fName, lName);
-        
-        message = String.format("Your full name is %s %s.", fName, lName);
-        JOptionPane.showMessageDialog(null, message);
+        //fullName = Name(fName, lName);
+        fullName = fName + lName;
     
-        
-        
+        salEmployee = Salary(fullName);
+        //hrEmployee = Hourly(fullName);
+        //commEmployee = Commission(fullName);
+ 
         /*
         Receive an integer of 1 back from each method such that counters will tally the number of weekly paychecks calculated for each type of employee.
         Print out the number of total successful paychecks calculated for each type of employee.
         */
     }
 
-    public static String Name(String firstName, String lastName)
+    /*public static String Name(String firstName, String lastName)
     {
         return firstName + lastName;
-    }
-    
-    /*public static
-    {
-        
     }*/
+    
+    public static String Salary(String Name)
+    {
+        double yrSal, annBonus, wPaycheck;
+        String message;
+        
+        yrSal = Double.parseDouble(JOptionPane.showInputDialog("Please "
+            + "provide the employee's yearly salary:"));
+
+        while (yrSal < 30000 || yrSal > 65000)
+        {
+            yrSal = Double.parseDouble(JOptionPane.showInputDialog("Invalid input: "
+                + "The amount must be between $30,000 and $65,000."));
+        }
+        
+        annBonus = Double.parseDouble(JOptionPane.showInputDialog("Please provide "
+            + "the annual profit bonus percent:"));
+        
+        wPaycheck = (yrSal * (1 + annBonus)) / 52;
+        
+        message = String.format("This summary is for employee: %s. The employee's "
+            + "yearly salary is $%.2f, which doesn't include the annual profit "
+            + "bonus of %.2f percent, and its weekly paycheck amount is $%.2f.", 
+            Name, yrSal, annBonus, wPaycheck);
+        JOptionPane.showMessageDialog(null, message);
+        
+        return message;
         
     /*
-    Prompt the user to enter their yearly pay amount and the company profit bonus percent
-    Calculate their weekly pay
-    Print out the employee’s name, total yearly salary plus profit bonus and this week's paycheck amount
     Pass back an integer of “1” directly to get added to the counter for the number of salaried employees whose paycheck has been calculated
-    */
+    */  
+    }
+    
     
     
         
