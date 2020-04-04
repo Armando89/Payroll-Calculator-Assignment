@@ -14,7 +14,7 @@ public class Assignment5C
         int salPaychecks = 0;
         int hrPaychecks = 0;
         int commPaychecks = 0;
-        String fName, lName, fullName, salEmployee, hrEmployee, commEmployee, message;
+        String fName, lName, salEmployee, hrEmployee, commEmployee, message;
         
         JOptionPane.showMessageDialog(null, "Welcome to the HR Payroll Program.");
         
@@ -96,7 +96,7 @@ public class Assignment5C
             + "bonus of %.2f percent, and the weekly paycheck amount is $%.2f.", 
             firstName, lastName, yrSal, annBonus, wPaycheck);
         JOptionPane.showMessageDialog(null, message);
-        
+
         return message; 
     }
     
