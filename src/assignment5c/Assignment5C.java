@@ -11,7 +11,10 @@ public class Assignment5C
     public static void main(String[] args) 
     {
         int answer;
-        String fName, lName, fullName, salEmployee, hrEmployee, commEmployee;
+        int salPaychecks = 0;
+        int hrPaychecks = 0;
+        int commPaychecks = 0;
+        String fName, lName, fullName, salEmployee, hrEmployee, commEmployee, message;
         
         JOptionPane.showMessageDialog(null, "Welcome to the HR Payroll Program.");
         
@@ -37,6 +40,7 @@ public class Assignment5C
                         + "name:");
             
                     salEmployee = Salary(fName, lName);
+                    salPaychecks++;
                     break;
                     
                 case 2:
@@ -46,6 +50,7 @@ public class Assignment5C
                         + "name:");
             
                     hrEmployee = Hourly(fName, lName);
+                    hrPaychecks++;
                     break;
                     
                 case 3:
@@ -55,14 +60,16 @@ public class Assignment5C
                         + "name:");
             
                     commEmployee = Commission(fName, lName);
+                    commPaychecks++;
                     break;
             }
         } while (answer != 4);
         
-        /*
-        Receive an integer of 1 back from each method such that counters will tally the number of weekly paychecks calculated for each type of employee.
-        Print out the number of total successful paychecks calculated for each type of employee.
-        */
+        message = String.format("The total number of Salary paychecks calculated "
+            + "is %s. The total number of Hourly paychecks calculated is %s. "
+            + "The total number of Commission paychecks calculated is %s.", 
+            salPaychecks, hrPaychecks, commPaychecks);
+        JOptionPane.showMessageDialog(null, message);
     }
 
     public static String Salary(String firstName, String lastName)
@@ -90,11 +97,7 @@ public class Assignment5C
             firstName, lastName, yrSal, annBonus, wPaycheck);
         JOptionPane.showMessageDialog(null, message);
         
-        return message;
-        
-    /*
-    Pass back an integer of “1” directly to get added to the counter for the number of salaried employees whose paycheck has been calculated
-    */  
+        return message; 
     }
     
     public static String Hourly(String firstName, String lastName)
@@ -151,10 +154,6 @@ public class Assignment5C
             }
         
         return message;
-        
-    /*
-    Pass back an integer of “1” directly to get added to the counter for the number of hourly employees whose paycheck has been calculated    
-    */
     }
     
     public static String Commission(String firstName, String lastName)
@@ -189,9 +188,5 @@ public class Assignment5C
         JOptionPane.showMessageDialog(null, message);
     
         return message;
-    
-    /*
-    Pass back an integer of “1” directly to get added to the counter for the number of commission employees whose paycheck has been calculated
-    */
     }
 }
