@@ -24,11 +24,11 @@ public class Assignment5C
             + "the employee is hourly enter a 2, if the employee is commission "
             + "enter a 3, or to exit the program enter a 4."));
         
-        while (answer < 1 || answer > 4)
-        {
-            answer = Integer.parseInt(JOptionPane.showInputDialog("Invalid input: "
-                + "Please provide a number between 1 and 4."));
-        }
+            while (answer < 1 || answer > 4)
+            {
+                answer = Integer.parseInt(JOptionPane.showInputDialog("Invalid input: "
+                    + "Please provide a number between 1 and 4."));
+            }   
         
         fName = JOptionPane.showInputDialog("Please enter your first name:");
         lName = JOptionPane.showInputDialog("Please enter your last name:");
@@ -36,7 +36,7 @@ public class Assignment5C
         fullName = fName + lName;
     
         salEmployee = Salary(fullName);
-        //hrEmployee = Hourly(fullName);
+        hrEmployee = Hourly(fullName);
         //commEmployee = Commission(fullName);
  
         /*
@@ -58,11 +58,11 @@ public class Assignment5C
         yrSal = Double.parseDouble(JOptionPane.showInputDialog("Please "
             + "provide the employee's yearly salary:"));
 
-        while (yrSal < 30000 || yrSal > 65000)
-        {
-            yrSal = Double.parseDouble(JOptionPane.showInputDialog("Invalid input: "
-                + "The amount must be between $30,000 and $65,000."));
-        }
+            while (yrSal < 30000 || yrSal > 65000)
+            {
+                yrSal = Double.parseDouble(JOptionPane.showInputDialog("Invalid input: "
+                    + "The amount must be between $30,000 and $65,000."));
+            }
         
         annBonus = Double.parseDouble(JOptionPane.showInputDialog("Please provide "
             + "the annual profit bonus percent:"));
@@ -80,6 +80,65 @@ public class Assignment5C
     /*
     Pass back an integer of “1” directly to get added to the counter for the number of salaried employees whose paycheck has been calculated
     */  
+    }
+    
+    public static String Hourly(String Name)
+    {
+        int hrs, otHours;
+        double hrRate, otPay, regularPay, wPaycheck;
+        String message;
+        
+        hrRate = Double.parseDouble(JOptionPane.showInputDialog("Please provide "
+            + "the employee's hourly rate:"));
+                        
+            while (hrRate < 10 || hrRate > 25)
+                {
+                    hrRate = Double.parseDouble(JOptionPane.showInputDialog("Invalid "
+                        + "input: The amount must be between $10.00 and $25.00."));
+                }
+                    
+        hrs = Integer.parseInt(JOptionPane.showInputDialog("Please provide the "
+            + "total number of hours worked:"));
+                        
+            while (hrs <= 0)
+                {
+                    hrs = Integer.parseInt(JOptionPane.showInputDialog("Invalid "
+                        + "input: The number of hours must be greater than 0."));
+                }
+                        
+            if (hrs > 40)
+            { 
+                otHours = Integer.parseInt(JOptionPane.showInputDialog("Please "
+                    + "provide the number of overtime hours worked:"));
+
+                otPay = ((hrRate * 1.5) * otHours);
+                regularPay = hrRate * 40;
+                wPaycheck = regularPay + otPay;
+
+                message = String.format("This summary is for employee: %s. The "
+                    + "employee's regular pay amount is $%.2f and its overtime "
+                    + "pay amount is $%.2f. Overall, the employee's weekly paycheck "
+                    + "amount equals to $%.2f.", Name, regularPay, otPay, wPaycheck);
+                JOptionPane.showMessageDialog(null, message);
+            }
+            else
+            {
+                otPay = 0;
+                regularPay = hrRate * hrs;
+                wPaycheck = regularPay + otPay;
+
+                message = String.format("This summary is for employee: %s. Since "
+                    + "the employee did not work any overtime, its overtime pay "
+                    + "equals $%.2f and its weekly paycheck/regular pay amount is "
+                    + "$%.2f.", Name, otPay, wPaycheck);
+                JOptionPane.showMessageDialog(null, message);
+            }
+        
+        return message;
+        
+    /*
+    Pass back an integer of “1” directly to get added to the counter for the number of hourly employees whose paycheck has been calculated    
+    */
     }
     
     
